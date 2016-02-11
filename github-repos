@@ -1,0 +1,4 @@
+listRepos (){
+  response=$(curl --silent https://api.github.com/users/a-a-ron/repos | jq '.[] | {name: .repo.name, description: .repo.description}')
+  echo "$response"
+}
