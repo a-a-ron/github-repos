@@ -1,4 +1,17 @@
-listRepos (){
-  response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .repo.name, description: .repo.description}')
+github-repos (){
+
+echo "What do you want?"
+echo "- A basic list of all repos [1]"
+echo "- Detailed information of a particular repo [2]"
+read input
+if [ $1 == "1" ]
+  then response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .repo.name, description: .repo.description}')
   echo "$response"
+elif [ $1 == "2"]
+  then response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .repo.name, description: .repo.description, message: .commit.message, author: .commit.committer.name}')
+  echo "$response"
+else
+  echo "Invalid response. Please enter either [1] or [2]"
+  read input
+fi
 }
