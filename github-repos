@@ -3,12 +3,14 @@ github-repos (){
 echo "What do you want?"
 echo "- A basic list of all repos [1]"
 echo "- Detailed information of a particular repo [2]"
-read input
-if [ $1 == "1" ]
-  then response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .repo.name, description: .repo.description}')
+read userInput
+if [ $userInput == "1" ]
+  then response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .name, description: .description}')
   echo "$response"
-elif [ $1 == "2"]
-  then response=$(curl --silent https://api.github.com/users/USERNAME/repos | jq '.[] | {name: .repo.name, description: .repo.description, message: .commit.message, author: .commit.committer.name}')
+elif [ $userInput == "2" ]
+  echo "What is the name of the repo?:"
+  read userInputRepo
+  then response=$(curl --silent https://api.github.com/users/USERNAME/$userInputRepo | jq '. | {name: .name, description: .description, has_issues: .has_issues, forks: .forks, open_issues: .open_issues, updated_at: .updated_at, language: .language}')
   echo "$response"
 else
   echo "Invalid response. Please enter either [1] or [2]"
