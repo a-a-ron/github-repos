@@ -9,3 +9,6 @@ Since this function uses jq to parse the JSON, you will also need to download jq
 There are two options. You can get a simple list of all repos for a user responding with the repos name and description. Or, input a specific repo name and get a more detailed list of information regarding that one specific repo.
 
 Addtional fields can be returned by adding them to the list of objects jq will query.
+
+## Additions
+Adding an option to view all issues assoicated with a repo and it's lables could be benefical. Perhaps a future enchancement. 
