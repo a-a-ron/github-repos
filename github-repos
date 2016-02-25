@@ -12,6 +12,8 @@ elif [ $userInput == "2" ]
   read userInputRepo
   then response=$(curl --silent https://api.github.com/users/USERNAME/$userInputRepo | jq '. | {name: .name, description: .description, has_issues: .has_issues, forks: .forks, open_issues: .open_issues, updated_at: .updated_at, language: .language}')
   echo "$response"
+  responseIssue=$(curl --silent https://api.github.com/repos/USERNAME/$userInputRepo/issues)
+  echo "$responseIssue"
 else
   echo "Invalid response. Please enter either [1] or [2]"
   read input
