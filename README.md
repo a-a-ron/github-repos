@@ -10,5 +10,7 @@ There are two options. You can get a simple list of all repos for a user respond
 
 Addtional fields can be returned by adding them to the list of objects jq will query.
 
+Returning a specific repo will return all issues tied to that repo.
+
 ## Additions
 Adding an option to view all issues assoicated with a repo and it's lables could be benefical. Perhaps a future enchancement. 
